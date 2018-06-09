@@ -1,5 +1,7 @@
 function setName(){
-  var name = prompt("What's ur name?");
+  var name = document.getElementById("name");
+  if(name.value==""){alert("Please enter a name!");}
   var x = document.getElementById("txt");
-  x.innerHTML = x.innerHTML + " " + name;
+  x.innerHTML = "Welcome " + name.value;
+  name.value = "";
 }
