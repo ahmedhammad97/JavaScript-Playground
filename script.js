@@ -1,5 +1,6 @@
 function changeColor(){
   document.body.style.backgroundColor = randomColor();
+  if(getSize($("#btn"))<30) enlarge();
 }
 
 function randomColor(){
@@ -10,4 +11,23 @@ function randomColor(){
   }
   //console.log(color);
   return "#"+color;
+}
+
+function getSize(x){
+  var size = x.css("font-size");
+  size = size.slice(0,-2);
+  return size;
+}
+
+function enlarge(){
+  var size  = getSize($("#btn"));
+  size++;
+  $("#btn").css("font-size",size + "px");
+}
+
+function shrink(){
+  if(getSize($("#btn"))<20)return;
+  var size = getSize($("#btn"));
+  size--;
+  $("#btn").css("font-size",size + "px");
 }
