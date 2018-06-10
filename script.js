@@ -1,6 +1,7 @@
 function changeColor(){
   document.body.style.backgroundColor = randomColor();
-  if(getSize($("#btn"))<30) enlarge();
+  $("#btn").css("background-color",randomColor());
+  $("#btn").css("color",randomColor());
 }
 
 function randomColor(){
