@@ -1,0 +1,19 @@
+body{
+ background-color: #e9e9e9;
+}
+#txt{
+  color: lightblue;
+  font-size: 30px;
+  font-family: fantasy;
+}
+
+#btn{
+  background: lightpink;
+  font: 20px;
+  font-family: monospace;
+  padding: 7px;
+  border-radius: 15px;
+  border-style: groove;
+  cursor: pointer;
+  border-color: transparent;
+}
