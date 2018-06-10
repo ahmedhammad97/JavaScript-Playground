@@ -1,6 +1,5 @@
 function changeColor(){
-  var x = document.getElementById("txt");
-  x.style.color = randomColor();
+  document.body.style.backgroundColor = randomColor();
 }
 
 function randomColor(){
