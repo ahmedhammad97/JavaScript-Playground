@@ -11,10 +11,5 @@ function randomColor(){
   for(i=0; i<6; i++){
     color = color + hex[Math.floor(Math.random()*16)];
   }
-  printColor(color);
   return "#"+color;
-}
-
-function printColor(color){
-  console.log(color);
 }
