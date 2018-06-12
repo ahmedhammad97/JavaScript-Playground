@@ -3,11 +3,45 @@
   <head>
     <meta charset="utf-8">
     <title>JS Calculator</title>
+    <style media="screen">
+      input{
+        width: 300px;
+        height: 40px;
+        font-size: 17px;
+        text-align: center;
+        font-weight: bold;
+        color: grey;
+        background: lightblue;
+        border-radius: 20px;
+        border-style: inset;
+        border-color: black;
+      }
+
+      button{
+        width : 120px;
+        height: 40px;
+        font-size: 17px;
+        color: white;
+        background: black;
+        border-radius : 20px;
+        cursor: pointer;
+        font-weight: bold;
+        margin-left: 30px;
+        border-style: solid;
+        border-color: grey;
+      }
+
+      button:hover{
+        background-color: darkgrey;
+      }
+    </style>
   </head>
   <body>
-    <input id="input" type="text" name="" value="" placeholder="Enter expression here.."><br><br>
+    <center>
+    <input id="input" type="text" name="" value="" placeholder="Enter expression here..">
     <button type="button" name="button" onclick="calc()">Calculate</button><br>
-    <h3 id="label"></h3>
+    <h2 id="label"></h2>
+  </center>
 
     <script type="text/javascript" src="stack.js"></script>
     <script type="text/javascript" src="script.js"></script>
