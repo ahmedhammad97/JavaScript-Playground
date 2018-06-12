@@ -1,7 +1,7 @@
 class Stack{
   constructor(){
     this.top = 0;
-    this. arr
+    this.arr = [];
   }
   push(x){
     this.arr[this.top] = x;
@@ -15,5 +15,5 @@ class Stack{
     if(this.top==0){return true;}
     return false;
   }
-  
+
 }

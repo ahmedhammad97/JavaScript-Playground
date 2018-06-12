@@ -1,4 +1,3 @@
-import * from 'stack.js'
 
 var inp = prompt("Enter Expression..");
 parse(inp);
@@ -6,7 +5,31 @@ parse(inp);
 function parse(inp){
   var text = removeSpaces(inp);
   if(!validate(text)){alert("Wrong format!");return;}
-  split(text);
+  var postfix = infixToPostfix(split(text));
+  console.log(postfix);
+
+
+}
+
+function infixToPostfix(arr){
+  var s = new Stack();
+  var newArr = [];
+
+  for(i=0;i<arr.length;i++){
+    if(!isOperation(arr[i])){newArr.push(arr[i]);}
+    else if(arr[i]=='\)'){
+      while(!s.isEmpty()){
+        var temp = s.pop();
+        if(temp=='\(')break;
+        newArr.push(temp);
+      }
+    }
+    else{
+      s.push(arr[i]);
+    }
+  }
+  while(!s.isEmpty()){newArr.push(s.pop());}
+  return newArr;
 }
 
 function split(text){
