@@ -1,15 +1,14 @@
 
-var inp = prompt("Enter Expression..");
-calc(inp);
-
 function calc(inp){
+  var inp = document.getElementById("input").value;
+  var lab = document.getElementById("label");
   var text = removeSpaces(inp);
-  if(!validate(text)){alert("Wrong format!");return;}
+  if(!validate(text)){label.innerText = "Wrong format!";return;}
   var postfix = infixToPostfix(split(text));
   console.log(postfix);
   var result = evaluatePostfix(postfix);
-  if(result){alert("Result : " + result);}
-  else{alert("Error, wrong format");}
+  if(result){lab.innerText = "Result : " + result;}
+  else{lab.innerText = "Wrong format";}
 }
 
 function infixToPostfix(arr){
@@ -17,7 +16,7 @@ function infixToPostfix(arr){
   var newArr = [];
 
   for(i=0;i<arr.length;i++){
-    if(!isOperation(arr[i])){newArr.push(arr[i]);}
+    if(!isNaN(arr[i])){newArr.push(arr[i]);}
     else if(arr[i]=='\)'){
       while(!s.isEmpty()){
         var temp = s.pop();
@@ -25,7 +24,11 @@ function infixToPostfix(arr){
         newArr.push(temp);
       }
     }
+    else if(arr[i]=='\('){s.push(arr[i]);}
     else{
+      while(priority(s.peek()) > priority(arr[i]) && !s.isEmpty()){
+          newArr.push(s.pop());
+      }
       s.push(arr[i]);
     }
   }
@@ -89,6 +92,7 @@ function removeSpaces(inp){
 }
 
 function validate(inp){
+  if(inp==null || inp==""){return false;}
   for(i=0;i<inp.length;i++){
     if(isNaN(inp[i]) && !isOperation(inp[i]) && inp[i]!='.'){return false;}
   }
@@ -98,4 +102,10 @@ function validate(inp){
 function isOperation(x){
   if(x=='+' || x=='-' || x=='*' || x=='/' || x=='\(' || x=='\)'){return true;}
   return false;
+}
+
+function priority(x){
+  if(x=='+' || x=='-'){return 1;}
+  if(x=='*' || x=='/'){return 2;}
+  if(x=='\('){return 0;}
 }

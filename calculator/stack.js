@@ -15,5 +15,8 @@ class Stack{
     if(this.top==0){return true;}
     return false;
   }
+  peek(){
+    return this.arr[this.top-1];
+  }
 
 }
