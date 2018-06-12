@@ -1,14 +1,15 @@
 
 var inp = prompt("Enter Expression..");
-parse(inp);
+calc(inp);
 
-function parse(inp){
+function calc(inp){
   var text = removeSpaces(inp);
   if(!validate(text)){alert("Wrong format!");return;}
   var postfix = infixToPostfix(split(text));
   console.log(postfix);
-
-
+  var result = evaluatePostfix(postfix);
+  if(result){alert("Result : " + result);}
+  else{alert("Error, wrong format");}
 }
 
 function infixToPostfix(arr){
@@ -30,6 +31,34 @@ function infixToPostfix(arr){
   }
   while(!s.isEmpty()){newArr.push(s.pop());}
   return newArr;
+}
+
+function evaluatePostfix(arr){
+  var s = new Stack();
+  for(i=0;i<arr.length;i++){
+    if(isOperation(arr[i])){
+        if(s.isEmpty()){return null;}
+        var one = s.pop();
+        if(s.isEmpty()){return null;}
+        var two = s.pop();
+        s.push(evaluate(one,two,arr[i]));
+    }
+    else{
+        s.push(arr[i]);
+    }
+    console.log(s.arr);
+  }
+  var result = s.pop();
+  if(!s.isEmpty()){return null;}
+  return result;
+}
+
+function evaluate(a,b,x){
+  if(x=='+'){return +a + +b;}
+  if(x=='-'){return +b - +a;}
+  if(x=='*'){return +a * +b;}
+  if(x=='/'){return +b / +a;}
+  return null;
 }
 
 function split(text){
