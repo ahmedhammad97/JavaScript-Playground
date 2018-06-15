@@ -4,5 +4,6 @@ function randomColor(){
   for(i=0;i<6;i++){
     color = color + arr[Math.floor(Math.random()*15)];
   }
+  console.log("Color generated : " + randomColor());
   return color;
 }
