@@ -1,4 +1,3 @@
-
 function calc(inp){
   var inp = document.getElementById("input").value;
   var lab = document.getElementById("label");
